@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+    <title>Signup</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<div class="row justify-content-center">
+    <div class="<col> col-md-6 text-center">
+        <form method="POST" action="/signup" th:object="${signup}" >
+            <h1 class="display-4 py-4">Registration Form</h1>
+            <div th:if="${session.message}"  th:classappend="${session.message.type}" class="alert" role="alert">
+                <p th:text="${session.message.content}"></p>
+                <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                        <span class="input-group-text">
+                                <i class="fa fa-user text-info"></i>
+                            </span>
+                </div>
+                <input type="text" class="form-control" name="username" placeholder="username" required autofocus th:value="${signup.username}">
+            </div>
+<!--            <div class="input-group my-3">-->
+<!--                <div class="input-group-prepend">-->
+<!--                        <span class="input-group-text">-->
+<!--                                <i class="fa fa-user-secret text-info"></i>-->
+<!--                            </span>-->
+<!--                </div>-->
+<!--                <input type="text" class="form-control" name="firstname" placeholder="first name" required th:value="${signup.firstname}">-->
+<!--            </div>-->
+            <div class="input-group my-3">
+                <div class="input-group-prepend">
+                        <span class="input-group-text">
+                                <i class="fa fa-user-secret text-info"></i>
+                            </span>
+                </div>
+                <input type="text" class="form-control" name="name" placeholder="Name" required th:value="${signup.name}">
+            </div>
+            <div class="input-group my-3">
+                <div class="input-group-prepend">
+                        <span class="input-group-text">
+                                <i class="fa fa-envelope text-info"></i>
+                            </span>
+                </div>
+
+                <input type="email" class="form-control" name="email" placeholder="email" required th:value="${signup.email}">
+            </div>
+
+
+            <div class="input-group my-3">
+                <div class="input-group-prepend">
+                        <span class="input-group-text">
+                                <i class="fa fa-lock text-info"></i>
+                            </span>
+                </div>
+                <input type="password" class="form-control" name="password" placeholder="password" required>
+            </div>
+            <div class="input-group my-3">
+                <div class="input-group-prepend">
+                        <span class="input-group-text">
+                                <i class="fa fa-phone text-info"></i>
+                            </span>
+                </div>
+                <input type="tel" class="form-control"  name="phone" placeholder="phone" required th:value="${signup.phone}">
+            </div>
+            <div class="form-group form-check text-center">
+                <input type="checkbox" name="agreement" class="form-check-imput" id="agreement" />
+                <label for="agreement">Accpet terms and conditons.</label>
+            </div>
+
+            <button type="submit" class="btn btn-info btn-block">Sign Up</button>
+        </form>
+        <a href="/login"  class="btn btn-secondary btn-block my-3">Log In</a>
+
+    </div>
+
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
