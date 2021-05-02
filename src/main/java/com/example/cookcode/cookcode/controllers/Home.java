@@ -33,7 +33,7 @@ public class Home {
         if(login.getRole().equals("ROLE_ADMIN")){
             return"redirect:/admin/home";
         }
-        if(login.getRole().equals("OWNER")){
+        if(login.getRole().equals("ROLE_OWNER")){
             return "owners/home";
         }
         return "redirect:/user/home";

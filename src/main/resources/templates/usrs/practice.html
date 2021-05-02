@@ -12,8 +12,27 @@
 </head>
 <body style="background-color:#b0b0b6">
 <div th:replace="fragments/after-login :: afternavbar"></div>
-<div  class="container">
-    <h1> This is Coding Area.</h1>
+<div  class="container bg-white" >
+<!--    <div clas></div>-->
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Difficulty</th>
+            <th scope="col">PostedBy</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="q : ${question}">
+            <th scope="row" th:text="${q.questionId}">1</th>
+            <td th:text="${q.questionName}">Mark</td>
+            <td th:text="${q.difficulty}">Otto</td>
+            <td th:text="${q.postedBy}">@mdo</td>
+        </tr>
+        </tbody>
+    </table>
+
 </div>
 
 <!-- Optional JavaScript -->

@@ -17,12 +17,14 @@ import java.util.Date;
 public class Questions {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long questionId;
+    Long id;
+    int questionId;
     String questionName;
     String description;
-    String image;
+//    String image;
     String example;
     String difficulty;
-    Date postDate;
-    Date updateDate;
+    String postedBy;
+//    Date postDate;
+//    Date updateDate;
 }
