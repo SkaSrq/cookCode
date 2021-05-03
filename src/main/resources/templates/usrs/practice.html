@@ -12,26 +12,37 @@
 </head>
 <body style="background-color:#b0b0b6">
 <div th:replace="fragments/after-login :: afternavbar"></div>
-<div  class="container bg-white" >
+<div  class="container bg-white mt-10" >
 <!--    <div clas></div>-->
     <table class="table table-hover">
         <thead>
         <tr>
-            <th scope="col">id</th>
+            <th scope="col">#Id</th>
             <th scope="col">Name</th>
             <th scope="col">Difficulty</th>
             <th scope="col">PostedBy</th>
+            <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="q : ${question}">
-            <th scope="row" th:text="${q.questionId}">1</th>
-            <td th:text="${q.questionName}">Mark</td>
-            <td th:text="${q.difficulty}">Otto</td>
-            <td th:text="${q.postedBy}">@mdo</td>
+            <th scope="row" ><span class="font-weight-bold" th:text="${q.questionId}"></span></th>
+            <td ><span class="font-weight-bold" th:text="${q.questionName}"></span></td>
+            <td th:text="${q.difficulty}"></td>
+            <td th:text="${q.postedBy}"></td>
+            <td>
+                <a href="" th:href="@{'/user/view/'+${q.questionId}}" class="btn btn-info mr-2">View</a>
+            </td>
         </tr>
         </tbody>
     </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li th:if="${currentPage>0}" class="page-item"><a th:href="@{'/user/practice/'+${currentPage-1}}" class="page-link" href="#">Previous</a></li>
+            <li th:classappend="${currentPage==i-1?'active':''}" th:each="i:${#numbers.sequence(1,totalPages)}" class="page-item"><a th:href="@{'/user/practice/'+${i-1}}" class="page-link" href="#"><span th:text="${i}"></span></a></li>
+            <li th:if="${currentPage<totalPages-1}" class="page-item"><a th:href="@{'/user/practice/'+${currentPage+1}}" class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
 
 </div>
 

@@ -12,9 +12,35 @@
 </head>
 <body style="background-color:#0a344e">
 <div th:replace="fragments/after-login :: afternavbar"></div>
-<div style="background-color:white" class="container fluid">
-<h1> Home Page.</h1>
+<div class="card mt-5 mr-5 ml-5">
+    <div class="card-header text-center display-4"><span th:text="${question.questionName}"></span></div>
+    <div class="card-body">
+        <div class="card-content font-weight-bold"> Description
+            <span  th:classappend="${diff=='easy'?'text-success border border-success':(diff=='medium'?'text-warning border border-warning':'text-danger border border-danger')}" th:text="${diff}">
+            </span>
+        </div>
+        <hr>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-content" th:text="${question.description}"></div>
+            </div>
+        </div>
+        <div class="card-content font-weight-bold">Example:</div>
+        <div class="card">
+            <div class="card-body">
+                <div th:text="${question.example}" class="card-content"></div>
+            </div>
+
+        </div>
+   </div>
 </div>
+<hr>
+<div class="card ml-5 mt-5 mr-5 ">
+    <div class="card-header">Run your code</div>
+    <div data-pym-src="https://www.jdoodle.com/embed/v0/3gWd">
+    </div>
+</div>
+<script src=”https://www.jdoodle.com/assets/jdoodle-pym.min.js” type=”text/javascript”></script>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
